@@ -1,0 +1,66 @@
+$carousel-transition: transform .55s linear !default;
+//$enable-gradients:  true ;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1367px,
+  xl: 1560px
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 1100px,
+  lg: 1200px,
+  xl: 1560px
+) !default;
+
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-y-auto{
+  overflow-y: auto;
+}
+
+$font-size: (
+  90: 90px,
+  25: 25px,
+  20: 20px,
+  16: 16px,
+  12: 12px,
+);
+
+@each $size, $break-point in $grid-breakpoints {
+  @media screen and (min-width: #{$break-point}) {
+    @each $name, $value in $font-size {
+      .font-size-#{$size}-#{$name} {
+        font-size: $value !important;
+      }
+    }
+  }
+}
+
+
+$gradient-dark: (
+  light: white,
+  light-black: rgba(0, 0, 0, 0.81)
+);
+
+@each $color , $value in $gradient-dark {
+  .gradient-#{$color} {
+    background: linear-gradient(to bottom, transparent, $value)!important;
+  }
+}
+
+@each $size, $break-point in $grid-breakpoints {
+  @media screen and (min-width: #{$break-point}) {
+    .overflow-hidden_#{$size} {
+      overflow: hidden;
+    }
+  }
+}
+
+
+
+
+

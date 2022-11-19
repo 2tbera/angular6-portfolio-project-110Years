@@ -1,0 +1,15 @@
+stages:
+- deploy
+
+before_script:
+- npm install
+
+deploy:
+  stage: deploy
+  only:
+  - master
+  script:
+  - ng build --prod --progress=false
+  - DEV_HOME="/home/admin/web/ubuntu-s-1vcpu-2gb-ams3-01.example.com/public_html";
+  - if [ ! -d $DEV_HOME ]; then exit 1; fi
+  - rsync -arp  . ${DEV_HOME}

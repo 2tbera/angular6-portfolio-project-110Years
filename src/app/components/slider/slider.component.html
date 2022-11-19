@@ -1,0 +1,60 @@
+<div class="carousel h-100vh slider" (wheel)="onWindowScroll($event)">
+    <div class="carousel-inner h-100">
+
+        <div *ngFor="let item of data.item"
+             class="slider-item w-100 h-100 gradient-white flex-column justify-content-center align-items-center"
+             [ngClass]="{'active': item.active , 'prev': item.prev}">
+            <span class="slider-item-title title-text-extra-bold"
+                  [class.wrapped]="data.scrollStatus">{{item?.title }}</span>
+            <div class="position-absolute slider-background w-100 h-100 d-flex justify-content-center align-items-center"
+                 [class.wrapped]="data.scrollStatus">
+                <img class="h-50" src="{{item.img }}">
+            </div>
+            <div class="w-60 attachment" [class.wrapped]="!data.scrollStatus">
+
+
+                <div class="col-7 text-white ">
+                </div>
+                <div class="col-5 text-white overflow-y-auto">
+                    <div
+                            class="title mb-3 title-text-extra-bold font-size-xl-25 font-size-lg-25 font-size-md-25 font-size-sm-25">
+                        About
+                    </div>
+                    <p scrollof="true" class="description title-text-Regular ">{{data?.activeItem?.description }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div [class.d-none]="data.scrollStatus"
+         class="w-100 position-absolute more justify-content-center align-items-center flex-column text-white title-text-extra-bold">
+        <div>გაიგე მეტი</div>
+    </div>
+    <div class="carousel-prev position-absolute d-flex justify-content-center align-items-center">
+        <div class="slider-arrow-icon" (click)="slide(false)">
+            <svg class="w-100 h-100" viewBox="0 0 140 140">
+                <g class="w-100 h-100" fill="none" fill-rule="evenodd" stroke="#FFF">
+                    <g class="arrow-svg-arrow w-100 h-100" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                       stroke-width="3">
+                        <path d="M54 71.999h36M68 58L54 72l14 14"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="carousel-next position-absolute d-flex justify-content-center align-items-center ">
+
+        <div class="slider-arrow-icon" (click)="slide(true)">
+            <svg class="w-100 h-100" viewBox="0 0 140 140">
+                <g class="w-100 h-100" fill="none" fill-rule="evenodd" stroke="#FFF">
+                    <g class="arrow-svg-arrow w-100 h-100" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                       stroke-width="3">
+                        <path d="M88 69.999H52M74 56l14 14-14 14"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>
+
